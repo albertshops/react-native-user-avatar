@@ -42,13 +42,9 @@ const UserAvatar = (props) => {
     if (component) setInner(<CustomAvatar size={size} component={component} />);
     if (src) {
       const controller = new (AbortController || window.AbortController)();
-      fetchImage(src, {signal: controller.signal}).then((isImage) => {
-        if (isImage) {
-          setInner(
-              <ImageAvatar src={src} size={size} imageStyle={imageStyle} />,
-          );
-        }
-      });
+		setInner(
+			<ImageAvatar src={src} size={size} imageStyle={imageStyle} />,
+		);
       return () => controller.abort();
     }
   }, []);
